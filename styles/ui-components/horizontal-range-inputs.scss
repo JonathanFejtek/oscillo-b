@@ -40,7 +40,7 @@
     }
 
     .#{$componentName}-range-container:hover{
-        border-color : lightblue;  
+       // border-color : lightblue;  
     }
 
     .#{$componentName}-range-input{
@@ -55,8 +55,6 @@
     }
 
     .#{$componentName}-range-input:hover{
-        border-color : lightblue;
-        outline : none;
         background-color : $sliderColor;
     }
 

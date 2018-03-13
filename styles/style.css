@@ -371,9 +371,6 @@ body {
   transition: all 2s;
   background-color: #FCFDFD; }
 
-.-range-container:hover {
-  border-color: lightblue; }
-
 .-range-input {
   width: 100%;
   margin-left: auto;
@@ -387,8 +384,6 @@ body {
   border-width: 1px; }
 
 .-range-input:hover {
-  border-color: lightblue;
-  outline: none;
   background-color: #FCFDFD; }
 
 .-pi-text-input {
