@@ -1,0 +1,36 @@
+.slider-group-container {
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  box-shadow: 1px 3px 2px #5c5c5c;
+  border-style: outset;
+  border-width: 1px;
+  font-size: 0; }
+
+.slider-float-controller-container {
+  padding: 10px;
+  box-shadow: 1px 3px 2px #5c5c5c;
+  border-style: outset;
+  border-width: 1px;
+  display: flex;
+  width: 100%;
+  background-color: #8FA3BB; }
+
+.slider-float-controller-dashboard {
+  display: flex;
+  flex-flow: column;
+  box-shadow: 1px 3px 2px #5c5c5c;
+  border-style: outset;
+  border-width: 1px;
+  padding: 2px;
+  background-color: #60799A; }
+
+.slider-float-controller-dashboard-reset-button {
+  padding: 3px;
+  border-style: inset;
+  box-shadow: 1px 3px 2px #5c5c5c;
+  border-style: outset;
+  border-width: 1px; }
+
+/*# sourceMappingURL=vertical-range-inputs.css.map */

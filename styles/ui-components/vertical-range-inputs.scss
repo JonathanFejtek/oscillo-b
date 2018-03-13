@@ -1,0 +1,130 @@
+@mixin border(){
+    box-shadow : 1px 3px 2px rgb(92, 92, 92);
+    border-style : outset;
+    border-width : 1px;
+}
+
+@mixin createVerticalSlider($sliderName,$sliderWidth,$sliderHeight,$thumbHeight,$sliderBackground,$progressColor,$thumbColor){
+
+    // create slider container style class
+    .#{$sliderName}-container{
+        position : relative;
+        width : $sliderWidth;
+        height : $sliderHeight;
+        display : inline-block;
+        font-size : 0;
+    }
+
+    .#{$sliderName}-label{
+        width : $sliderWidth;
+        border-style : solid;
+        border-width: 1px;
+        height : 20px;
+        background-color :#60799A;
+        color : white;
+        border-style : none none none dotted;
+        font-size : 12px;
+        display : inline-block;
+        text-align : center;
+        padding-top : 4px;
+    }
+
+    // create range slider style class 
+    .#{$sliderName}{
+        -webkit-appearance: none;  
+        height: $sliderWidth; 
+        width: $sliderHeight;
+        border: solid rgba(0,0,0,0.3) 1px;
+        border-bottom: solid rgba(0,0,0,0.5) 1px;
+        border-left: solid rgba(0,0,0,0.5) 1px;
+
+        // rotate slider inside its container
+        -webkit-transform: rotate(90deg);
+        -webkit-transform-origin: top left;
+        position : absolute;
+        left : $sliderWidth;
+        overflow : hidden;
+        direction: rtl;
+    }
+
+    // chrome track style
+    .#{$sliderName}::-webkit-slider-runnable-track{
+        cursor: pointer;
+        background: $sliderBackground;
+        height : 100%;
+        border : none;       
+    }
+
+    // moz track style
+    .#{$sliderName}::-moz-range-track{
+        cursor: pointer;
+        background: $sliderBackground;
+        height : 100%;
+        border : none;        
+    }
+
+    // chrome thumb style
+    .#{$sliderName}::-webkit-slider-thumb{
+        -webkit-appearance: none;
+        border: 1px solid #000000;
+        height: #{$sliderWidth - 2};
+        width: $thumbHeight;
+        border-radius: 2px;
+        background: $thumbColor;
+        box-shadow: #{$sliderHeight} 0px 0px #{$sliderHeight} $progressColor;
+        -webkit-box-shadow: #{$sliderHeight} 0px 0px #{$sliderHeight} $progressColor;
+        
+    }
+
+    // moz thumb style
+    .#{$sliderName}::-moz-range-thumb{
+        -webkit-appearance: none;
+        border: 1px solid #000000;
+        height: #{$sliderWidth - 2};
+        width: $thumbHeight;
+        border-radius: 2px;
+        background: $thumbColor;
+        box-shadow: #{$sliderHeight} 0px 0px #{$sliderHeight} $progressColor;
+        -webkit-box-shadow: #{$sliderHeight} 0px 0px #{$sliderHeight} $progressColor;
+    }
+}
+
+@mixin horizontalScrollArea($width){
+    width : $width;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space : nowrap;
+     @include border();
+    // border-style : solid;
+    // border-width : 1px;
+    font-size : 0;
+}
+
+.slider-group-container{
+    @include horizontalScrollArea(100%);
+
+}
+
+.slider-float-controller-container{
+    padding : 10px;
+    // border-style : solid;
+    // border-width: 1px;
+    @include border();
+    display : flex;
+    width : 100%;
+    background-color : #8FA3BB;
+}
+
+.slider-float-controller-dashboard{
+    display : flex;
+    flex-flow : column;
+    @include border();
+    padding :2px;
+    background-color : #60799A;
+}
+
+.slider-float-controller-dashboard-reset-button{
+    padding : 3px;
+    border-style : inset;
+    @include border();
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Oscillo</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Cairo:200,300,400,600,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani:300,400,500,600,700" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+</head>
+<body>
+    <div class="app">
+        <div class="help-section">
+            <div class="help-modal">
+                <button class = "close-help-button">
+                    <i class="fas fa-window-close"></i>
+                </button>  
+
+                <section class="help-sub-section">
+                    <h3>What is Oscillo?</h3>
+                    <p>Oscillo is a prototype generative design tool that uses harmonic mathematics to create cool forms. Generative design can be broadly defined as a modern design movement that emphasizes the creation of algorithmic and mathematical systems to aid in various design problems. Oscillo is a generative form-finder that can produce an array of forms given different input parameters.</p>
+                    <p>Oscillo is a also a technical web-development experiment. Oscillo is built with a custom component system written almost entirely in VanillaJS. Oscillo does not depend on any Javascript libraries (besides some very minimal jQuery). If you are interested, you can view the source <a href="https://github.com/JonathanFejtek/oscillo">here</a>. </p>
+                </section>
+
+                <section class="help-sub-section">
+                    <h3>How does it work?</h3>
+                    <p>
+                        Oscillo's core functionality is based on what is called a <a href="https://en.wikipedia.org/wiki/Fourier_series">Fourier Series</a> in mathematics. Put simply, Oscillo relies heavily on the principle that any mathematical function can be represented as a sum of simple waves. In other words, we can create mathematical functions by adding simple waves together. In this sense, one might understand Oscillo as a visual <a href="https://en.wikipedia.org/wiki/Additive_synthesis">additive synthesizer.</a>
+                    </p>
+                    <p>
+                        When we modify the EQ of a sound system, we are modifying the <a href="https://en.wikipedia.org/wiki/Harmonic_series_(music)">harmonic spectrum</a> of a sound signal. Oscillo provides a similar interface for modifying spectra. Consider the following waveforms and their corresponding Fourier Series:
+                    </p>
+                    <br>
+                    <div class="spectrum-example-container">
+                        <img src="assets/ex1.png" alt="">
+                        <img src="assets/ex1b.png" alt="">
+                    </div>
+                    <div class="spectrum-example-container">
+                        <img src="assets/ex2.png" alt="">
+                        <img src="assets/ex2b.png" alt="">
+                    </div>
+                    <div class="spectrum-example-container">
+                        <img src="assets/ex3.png" alt="">
+                        <img src="assets/ex3b.png" alt="">
+                    </div>
+                    <br>
+                    <p>
+                        Oscillo allows us to modify two distinct spectra to produce two different mathematical functions. Firstly, Oscillo allows us to modify a spectrum that is a sum of sine waves. And secondly, Oscillo allows use to modify a spectrum that is a sum of cosine waves. When we assign each of these functions a domain in (x,y) <a href="https://en.wikipedia.org/wiki/Euclidean_space">Euclidean space</a>, we are able to plot their relationship in two-dimensions. Consider the following spectra pairs and their 2d plot:
+                    </p>
+                    <br>
+                    <div class="spectrum-example-container">
+                        <img src="assets/exb1.png" alt="">
+                        <img src="assets/exb1b.png" alt="">
+                        <img src="assets/exb1c.png" alt="">
+                    </div>
+                    <div class="spectrum-example-container">
+                        <img src="assets/exb2.png" alt="">
+                        <img src="assets/exb2b.png" alt="">
+                        <img src="assets/exb2c.png" alt="">
+                    </div>
+                    <div class="spectrum-example-container">
+                        <img src="assets/exb3.png" alt="">
+                        <img src="assets/exb3b.png" alt="">
+                        <img src="assets/exb3c.png" alt="">
+                    </div>
+                    <br>
+                    <p>Furthermore, Oscillo allows us to modify certain aspects of this plotted 2d curve. Most importantly, we can change the fidelity of our plotted curve: we can change the number of points that will make up our plotted curve. Consider the way that changing curve fidelity can modify the appearance of the 2d plot:</p>
+                    <br>
+                    <div class = "spectrum-example-container">
+                        <img src="assets/f1.png" alt="">
+                        <img src="assets/f2.png" alt="">
+                    </div>
+
+                </section>
+            </div>
+        </div>
+        <div class="help-bar">
+            <h5>Optimized for Chrome</h5>
+            <h5>Created by <a href="https://jfejtek.com">Jonathan Fejtek</a></h5>
+            <button class = "toggle-help-button"><i class="fas fa-question-circle"></i></button>
+         </div>
+        <div class="top-controls">
+            <div id="tc-left">
+                <h1 class = "app-title">Oscillo</h1>
+            </div>  
+            <div id="slider-group-container"></div>
+        </div>
+        
+        <div class="bottom-controls">
+            <div id="curve-controls">
+                <div class="wavePreviewCanvasContainer">
+                    <div class="wavePreviewCanvasContainer-col1">
+                        <div class = "wavePreviewCanvas" id="sinePreviewCanvas"></div>
+                    </div>
+                    <div class="wavePreviewCanvasContainer-col2">
+                        <div class = "wavePreviewCanvas" id="cosPreviewCanvas"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="canvas-container"></div>
+        </div>        
+    </div>
+
+
+    <script
+    src="http://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>  
+    <script src = "scripts/utils/observer-pattern.js"></script>
+    <script src = "scripts/primitives-ui/misc-ui.js"></script>
+    <script src = "scripts/primitives-ui/horizontal-range-inputs.js"></script>
+    <script src = "scripts/primitives-ui/vertical-range-inputs.js"></script>
+    <script src = "scripts/oscillo-ui/partial-view-controller.js"></script>
+    <script src = "scripts/oscillo-ui/curve-view-controller.js"></script>
+    <script src = "scripts/oscillo-ui/preset-view-controller.js"></script>
+    <script src = "scripts/oscillo-model/harmonic-summator.js"></script>
+    <script src = "scripts/oscillo-render/phase-portrait.js"></script>
+    <script src = "scripts/oscillo-render/wave-preview.js"></script>
+    <script src = "scripts/svg/svg_canvas.js"></script>
+    <script src = "scripts/svg/shape/shape2.js"></script>
+    <script src = "scripts/app.js"></script>
+</body>
+</html>
